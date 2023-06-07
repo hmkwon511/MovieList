@@ -47,15 +47,16 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             tvGenre = view.findViewById(R.id.tvGenre);
             tvYear = view.findViewById(R.id.tvYear);
 
-            int pos = getAdapterPosition();
-            if (pos != RecyclerView.NO_POSITION) {
-                view.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int pos = getAdapterPosition();
+                    if (pos != RecyclerView.NO_POSITION) {
                         itemClickListener.onItemClick(view, pos);
                     }
-                });
-            }
+                }
+            });
+
         }
 
         public ImageView getImageView() {
@@ -111,7 +112,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         viewHolder.getTvTitle().setText(localTitles[position]);
         viewHolder.getTvGenre().setText("판타지");
         viewHolder.getTvRating().setText("9.0" + position);
-        viewHolder.getTvYear().setText("2020" + position);
+        viewHolder.getTvYear().setText(Integer.toString(2020 + position));
     }
 
     // Return the size of your dataset (invoked by the layout manager)
